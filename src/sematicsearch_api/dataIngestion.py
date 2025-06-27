@@ -44,7 +44,7 @@ class DataIngestion:
 
     def convertToDocs(self):
         try:
-            splitter = RecursiveCharacterTextSplitter(chunk_size=100,chunk_overlap=10)
+            splitter = RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=200)
             logging.info("splitter initialized successfully")
         except Exception as e:
             raise CustomException(e,sys)
