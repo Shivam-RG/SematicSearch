@@ -9,16 +9,32 @@ from src.sematicsearch_api.search import Search
 from pathlib import Path
 
 
-BASE_DIR = Path(__file__).resolve().parent
-artifact_path = BASE_DIR / "artifacts" / "retriever.pkl"
+# BASE_DIR = Path(__file__).resolve().parent
+# artifact_path = BASE_DIR / "artifacts" / "retriever.pkl"
 
+GITHUB_RETRIEVER_URL = "https://github.com/Shivam-RG/SematicSearch/releases/download/v.0.1/retriever.pkl"
+LOCAL_PATH = "artifacts/retriever.pkl"
 
-with open(artifact_path,'rb') as f:
+def download_if_not_exists():
+    if not os.path.exists(LOCAL_PATH):
+        os.makedirs(os.path.dirname(LOCAL_PATH), exist_ok=True)
+        print("Downloading retriever.pkl from GitHub release...")
+        response = requests.get(GITHUB_RETRIEVER_URL)
+        if response.status_code == 200:
+            with open(LOCAL_PATH, "wb") as f:
+                f.write(response.content)
+            print("Download complete.")
+        else:
+            raise RuntimeError(f"Failed to download retriever.pkl: {response.status_code}")
+
+# Call before loading
+download_if_not_exists()
+
+# Then load like usual
+with open(LOCAL_PATH, "rb") as f:
     retriever = pickle.load(f)
 
-
 app = FastAPI()
-
 
 @app.get("/", response_class=HTMLResponse)
 async def home():
