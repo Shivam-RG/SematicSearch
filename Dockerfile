@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
 
 # Install the dependencies
+COPY requirements.txt .
 RUN python -m pip install --no-cache-dir -r requirements.txt
 
 # download retriever from github release
