@@ -37,7 +37,7 @@
 │  Serialization:     Pickle                                      │
 │  Data Models:       Pydantic                                    │
 │  HTTP Protocol:     REST API                                    │
-│  Response Format:   JSON/HTML                                   │
+│  Response Format:   JSON                                        │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
