@@ -26,22 +26,22 @@ from src.sematicsearch_api.search import Embeddings,SematicRetriever,Search
 
 # DataIngestion
 
-ingestion = DataIngestion(file_path=r'C:\Users\Meta\Downloads\Sematic\SematicSearch\data\codebasics_faqs.csv')
-data,extension = ingestion.load_data()
-docs = ingestion.convertToDocs()
+# ingestion = DataIngestion(file_path=r'C:\Users\Meta\Downloads\Sematic\SematicSearch\data\codebasics_faqs.csv')
+# data,extension = ingestion.load_data()
+# docs = ingestion.convertToDocs()
 
 
 # Embeddings,VectorStore,Retriever and Seamtic Search
 
-embedder = Embeddings()
-embedder.getEmbeddings()
-vectordb = embedder.VectorDB(docs=docs)
+# embedder = Embeddings()
+# embedder.getEmbeddings()
+# vectordb = embedder.VectorDB(docs=docs)
 
-retrieve = SematicRetriever(vectordb=vectordb)
-retriever = retrieve.getRetriever()
+# retrieve = SematicRetriever(vectordb=vectordb)
+# retriever = retrieve.getRetriever()
 
-sematic_search = Search(query='What is the refund policy?',retriever=retriever)
+# sematic_search = Search(query='What is the refund policy?',retriever=retriever)
 
-result = sematic_search.sematic_results()
+# result = sematic_search.sematic_results()
 
-print(result)
+# print(result)
